@@ -9,8 +9,8 @@ cd source
 ```
 ## 2. Install & build (no sudo)
 ```bash
-npm ci
-npm run build
+sudo npm ci
+sudo npm run build
 ```
 
 ## 3. Atomic deploy
