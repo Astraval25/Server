@@ -4,7 +4,7 @@
 ```bash
 cd /var/www/domains/coreflow.astraval.com/
 sudo rm -rf source
-git clone https://github.com/Astraval25/CoreFlowFrontend source
+sudo git clone https://github.com/Astraval25/CoreFlowFrontend source
 cd source
 ```
 ## 2. Install & build (no sudo)
