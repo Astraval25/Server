@@ -126,5 +126,17 @@ sudo nano /etc/apache2/sites-available/coreflow.astraval.com.conf
 sudo a2ensite coreflow.astraval.com.conf
 sudo systemctl reload apache2
 ```
+## 8. File saving permision 
+```bash
+# create folder if not exists
+sudo mkdir -p /var/www/coreflow/uploads
 
+# give ownership to web app user (example: www-data)
+sudo chown -R www-data:www-data /var/www/coreflow/uploads
+
+# give read/write/execute permission
+sudo chmod -R 775 /var/www/coreflow/uploads
+
+sudo chmod -R 777 /var/www/coreflow/uploads
+```
 ---
