@@ -7,11 +7,11 @@
 cd /var/www/domains/coreflow.astraval.com
 sudo rm -rf source
 
-# Clone the repository into 'source' folder
-sudo git clone https://github.com/Astraval25/CoreFlowBackend.git source
+# Clone the repository into 'backend' folder
+sudo git clone https://github.com/Astraval25/CoreFlowBackend.git backend
 
-# Enter source folder
-cd source
+# Enter backend folder
+cd backend
 
 # Set ownership and permissions
 sudo chown -R $USER:$USER .
@@ -28,7 +28,7 @@ sudo chmod -R 755 .
 
 ```bash
 
-sudo cp /var/www/domains/coreflow.astraval.com/source/build/libs/coreflow-0.0.1-SNAPSHOT.jar /var/www/coreflow/coreflow.jar
+sudo cp /var/www/domains/coreflow.astraval.com/backend/build/libs/coreflow-0.0.1-SNAPSHOT.jar /var/www/coreflow/coreflow.jar
 
 # Set permissions
 sudo chmod 755 /var/www/coreflow/coreflow.jar
