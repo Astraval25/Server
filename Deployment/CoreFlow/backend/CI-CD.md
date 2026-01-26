@@ -5,7 +5,7 @@
 
 ```bash
 cd /var/www/domains/coreflow.astraval.com
-sudo rm -rf source
+sudo rm -rf backend
 
 # Clone the repository into 'backend' folder
 sudo git clone https://github.com/Astraval25/CoreFlowBackend.git backend
