@@ -141,10 +141,12 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/opt/vernemq/bin/vernemq daemon
-ExecReload=/bin/kill -s HUP $MAINPID
+ExecStart=/opt/vernemq/bin/vernemq start
+ExecStop=/opt/vernemq/bin/vernemq stop
 Restart=always
-User=root
+RestartSec=5
+TimeoutStartSec=120
+TimeoutStopSec=60
 LimitNOFILE=100000
 
 [Install]
