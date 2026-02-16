@@ -5,3 +5,4 @@
 4. [VerneMQ Commands](https://github.com/Astraval25/Server/blob/main/VerneMQ/Commands.md)
 5. [File Based Auth](https://github.com/Astraval25/Server/blob/main/VerneMQ/Auth-using-files.md)
 6. [File Based ACL](https://github.com/Astraval25/Server/blob/main/VerneMQ/File-Based-ACL.md)
+7. [PostgreSQL Based Auth and ACL](https://github.com/Astraval25/Server/blob/main/VerneMQ/PostgreSQL-Setup-for-VerneMQ.md)
