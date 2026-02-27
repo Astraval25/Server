@@ -1,5 +1,21 @@
 # VerneMQ Commands...
+For current user (bash):
 
+- Edit `~/.bashrc` (or `~/.profile` if you use that) and add:
+  - `export PATH=/opt/vernemq/bin:$PATH`
+- Reload the file:
+  - `source ~/.bashrc`
+- Now run:
+  - `vernemq restart`
+
+For system-wide (all users):
+
+- Create a file `/etc/profile.d/vernemq.sh` with:
+  - `export PATH=/opt/vernemq/bin:$PATH`
+- Log out and log back in, then:
+  - `vernemq restart`
+
+  
 ## Correct Commands
 ```bash
 vernemq help    # Shows all valid commands
