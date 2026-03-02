@@ -62,7 +62,7 @@ DB_PASSWORD=password
 
 JPA_DDL_AUTO=update
 JPA_SHOW_SQL=true
-SQL_INIT_MODE=always
+SQL_INIT_MODE=never
 
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
