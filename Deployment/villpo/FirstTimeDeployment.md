@@ -107,29 +107,76 @@ sudo journalctl -u villpo -f
 ```
 
 ## Deploy Frontend 
+```
+cd ecommercefrontend/
+mkdir  /var/www/villpo/frontend
+```
 
 ```
+npm ci
+npm install 
+npm run build
+cp -r dist/* /var/www/villpo/frontend/
+```
+
+```
+sudo chown -R www-data:www-data /var/www/villpo/frontend
+sudo chmod -R 755 /var/www/villpo/frontend
+```
+
+```
+sudo mkdir -p /var/www/villpo/frontend/logs
 sudo nano /etc/apache2/sites-available/villpo.astraval.com.conf
 ```
+
+
 ```
 <VirtualHost *:80>
     ServerName villpo.astraval.com
 
-    ProxyPreserveHost On
-    ProxyPass "/" "http://127.0.0.1:8090/"
-    ProxyPassReverse "/" "http://127.0.0.1:8090/"
+    DocumentRoot /var/www/villpo/frontend
 
-    ErrorLog ${APACHE_LOG_DIR}/villpo-error.log
-    CustomLog ${APACHE_LOG_DIR}/villpo-access.log combined
+    <Directory /var/www/villpo/frontend>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        RewriteEngine On
+        RewriteBase /
+
+        # If a file or directory exists, serve it directly
+        RewriteCond %{REQUEST_FILENAME} -f [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^ - [L]
+
+        # Otherwise serve index.html (SPA fallback)
+        RewriteRule ^ index.html [L,QSA]
+    </Directory>
+
+    # Logs
+    ErrorLog /var/www/villpo/frontend/logs/error.log
+    CustomLog /var/www/villpo/frontend/logs/access.log combined
 </VirtualHost>
 ```
+
 ```
+sudo apache2ctl configtest  # Should say "Syntax OK"
 sudo a2ensite villpo.astraval.com.conf
+sudo a2enmod rewrite headers expires deflate
 sudo systemctl reload apache2
 ```
 ```
-sudo mkdir -p /var/www/villpo/uploads
-sudo chown -R www-data:www-data /var/www/villpo/uploads
-sudo chmod -R 775 /var/www/villpo/uploads
-sudo chmod -R 777 /var/www/villpo/uploads
+sudo chown -R www-data:www-data /var/www/villpo/
+sudo chmod -R 755 /var/www/villpo/
+sudo find /var/www/villpo/frontend/ -type f -exec chmod 644 {} \;
+```
+```
+# Local test
+curl -I http://localhost
+
+# Apache status
+sudo systemctl status apache2
+
+# Check logs
+sudo tail -f /var/www/villpo/frontend/logs/error.log
 ```
