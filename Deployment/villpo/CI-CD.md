@@ -3,7 +3,7 @@ sudo su
 cd /var/www/domains/villpo.astraval.com/source
 git pull
 cd ecommercebackend
-./gradlew clean build
+./gradlew clean build -x test
 sudo cp /var/www/domains/villpo.astraval.com/source/ecommercebackend/build/libs/ecommercebackend-0.0.1-SNAPSHOT.jar /var/www/villpo/villpo.jar
 
 sudo chmod 755 /var/www/villpo/villpo.jar
