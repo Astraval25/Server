@@ -12,7 +12,8 @@ npm run build
 ```
 #### Move build to secure public folder
 ```
-cp -r dist/* ../public/
+mkdir ../../public/
+cp -r dist/* ../../public/
 ```
 ## 2. Set secure permissions
 ```
